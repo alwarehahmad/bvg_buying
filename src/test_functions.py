@@ -30,6 +30,9 @@ def test_success_purchase():
 
     assert "Done, Enjoy your beverage..." == vm.buy_beverage("Pepsi", {10: 2})
 
+    vm.refilling_change({10: 5, 20: 2, 50: 5, 100: 2, 200: 5})
+    assert vm.current_coins == {10: 12, 20: 2, 50: 5, 100: 2, 200: 5}
+
 
 def test_no_change_purchase():
     locations = ["KL", "PJ", "Penang"]
@@ -55,10 +58,12 @@ def test_no_change_purchase():
 
     vending_machines = VendingMachines(accepted_coins=accepted_coins, beverages=beverages, locations=locations,
                                        names=[])
-    vm = vending_machines.add_vm(name="KL", accepted_coins=accepted_coins, beverages=beverages, location="KL",
+    vm = vending_machines.add_vm(name="ahmad", accepted_coins=accepted_coins, beverages=beverages, location="KL",
                                  starting_coins={10: 0, 20: 0, 50: 0, 100: 0, 200: 0})
-
     assert "insufficient change..." == vm.buy_beverage("Pepsi", {10: 2})
+
+    stat = vending_machines.update_location_for_vm("KL", "Jeff")
+    assert "name is wrong..." == stat
 
 
 def main():

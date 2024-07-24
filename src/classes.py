@@ -64,6 +64,8 @@ class VendingMachine:
     def refilling_change(self, coins):
         self.current_coins = {coin: self.current_coins.get(coin, 0) + count for coin, count in coins.items()}
         return "change refilled..."
+
+
 class VendingMachines:
     def __init__(self, names: [], accepted_coins: [], beverages: {}, locations: []):
         self.names = names
