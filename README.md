@@ -1,3 +1,8 @@
 To run the program do:
 ```shell
-python 
+python .\src\main.py
+```
+To run tests:
+```shell
+python .\src\test_functions.py
+``` 
